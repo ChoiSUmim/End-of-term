@@ -1,109 +1,154 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+ul {
+  list-style: none;
 }
 
 body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
+  height: 100vh;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+header {
+  border-bottom: 1px solid #fff;
+  width: 100%;
+  height: 80px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 80px;
+  margin-left: 20px;
+}
+
+i.fa-bars {
+  display: none;
+}
+
+.list {
+  height: 100%;
+  display: flex;
+}
+
+.item {
+  width: 120px;
+  font-size: 20px;
+  letter-spacing: 4px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.item:before {
+  position: absolute;
+  content: '';
+  top: 25%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: transparent;
+  border-radius: 30px;
+  transition: all 0.3s;
+  z-index: -1;
+}
+
+.item:hover:before {
+  background-color: black;
+  transform: rotateY(180deg);
+}
+
+.item.active a {
+  color: white
+}
+
+.item:hover a {
+  color: white;
+}
+
+section {
+  height: 100%;
+  width: 100%;
+  background-color: skyblue;
+  background-image: url('image/index_0519.png');
+  background-position: center;
+  background-size:cover;
+
+}
+
+
+
+@media only screen and (max-width: 800px) {
+  header {
+    flex-direction: column;
     align-items: center;
+    height: auto;
+  }
 
-    font-family: sans-serif;
-    background-color: #ced4da;
-}
+  .logo {
+    margin: 0;
+  }
 
-/* Book */
-.book {
-    position: relative;
-    width: 700px;
-    height: 750px;
-    transition: transform 0.5s;
-}
-
-.paper {
-    position: absolute;
+  .navbar {
     width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    perspective: 1500px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+  }
 
-}
+  .navbar.active {
+    max-height: 400px;
+  }
 
-.front,
-.back {
-    background-color: white;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    transform-origin: left;
-    transition: transform 0.5s;
-}
-
-.front {
-    z-index: 1;
-    backface-visibility: hidden;
-    border-left: 3px solid black;
-}
-
-.back {
-    z-index: 0;
-}
-
-.front-content,
-.back-content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
+  .list {
+    flex-direction: column;
     align-items: center;
-}
+  }
 
-.back-content {
-    transform: rotateY(180deg)
-}
+  .item {
+    height: 50px;
+    width: 50%;
+  }
 
-/* Paper flip effect */
-.flipped .front,
-.flipped .back {
-    transform: rotateY(-180deg);
-}
+  .item:before {
+    height: 100%;
+    width: 100%;
+    top: 0;
+  }
 
-/* Controller Buttons */
-button {
-    border: none;
-    background-color: transparent;
+  .item:hover:before {
+    transform: rotateY(0deg);
+  }
+
+  i.fa-bars {
+    display: block;
+    position: absolute;
+    font-size: 30px;
+    top: 23px;
+    right: 20px;
     cursor: pointer;
-    margin: 10px;
-    transition: transform 0.5s;
-}
+  }
 
-button:focus {
-    outline: none;
-}
-
-button:hover i {
-    color: #636363;
-}
-
-i {
-    font-size: 50px;
+  i.fa-bars:hover {
     color: gray;
+  }
+
+
 }
 
-/* Paper stack order */
-#p1 {
-    z-index: 3;
-}
-
-#p2 {
-    z-index: 2;
-}
-
-#p3 {
-    z-index: 1;
-}
+.box {background-color: #f0f0f0;}
